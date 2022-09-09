@@ -6,7 +6,7 @@
 <body>
 
 <?php
-echo "Texto básico en PHP";
+echo "Texto entorno";
 ?>
 
 </body>
