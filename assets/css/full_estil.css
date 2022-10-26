@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* PRINCIPAL */
+@font-face {
+font-family: "helvetica";
+src: url(../tipografias/Helvetica-Light.otf);
+}
+
+header {
+    background: #333;
+}
+
+h1{
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+h2 {
+  padding:20px;
+}
+
+header div div div a{
+  color: white;
+  text-decoration: none;
+}
+
+header div div div a:hover{
+  color: red;
+  text-decoration: none;
+}
+
+ul a{
+  /*background: green;*/
+  color: white;
+}
+ul a:hover {
+  color:red;
+  text-decoration: none;
+}
+
+.nav-link {
+  padding:12px;
+}
+
+.row {
+  padding-top: 0px;
+}
+
+.menu-bar {
+  background: #222;
+  margin: 0px;
+}
+
+.menu-bar a {
+  color: white;
+}
+
+.seccion1{
+    background: #ddd;
+    border: 2px solid black;
+    margin: 6px 6PX 40PX 3PX;
+    padding: 20px;
+    /*float: left;
+    cursor: pointer;*/
+}
+
+.seccion1:hover{
+    background: black;
+}
+
+
+
+/* FOOTER */
+
+footer{
+  background: #333;
+  color: black;
+  padding: 30px;;
+    clear: both;
+}
+footer p{
+  margin:0px;
+  width: 1920px;
+  height: 225px;
+}
+
+.fondoOferta{
+  background-color: #A87F7F;
+}
