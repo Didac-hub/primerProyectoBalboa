@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<?php include 'views/cabecera.php'?>
+<?php require_once 'views/cabecera.php'?>
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
@@ -70,5 +70,5 @@
 </html>
 
 <?php
-include 'views/footer.php';
+require_once 'views/footer.php';
 ?>
