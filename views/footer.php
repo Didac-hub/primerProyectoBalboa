@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <footer>
+<div class="footerP">
+    <h3>PAGINAS DE INTERES</h3>
+    <p>Carta</p>
+    <p>Politicas de privacidad</p>
+</div>
+
 <div class="footerL">
-        <p>Carta        Politicas de privacidad</p>
-        <p>Ofertas      Aviso legal </p>
-        <p>Contactanos      Politicas de cookies </p>
-    </div>
+    <a class="fotoL" href="index.php"><img src="img\LogoFooter.png"></a>
+</div>
+ 
+<div class="footerR">
+    <img src="img\twitt.png"><img src="img\inst.png"><img src="img\face.jpg">
+</div>
 
-    <div class="footerF">
-        <a class="fotoL" href="index.php"><img src="fotologo.jpg"></a>
-    </div>
-
-    <div class="footerR">
-        <img src="twitter.png"><img src="insta.png"><img src="facebook.png">
-    </div>
 </footer>
 
 

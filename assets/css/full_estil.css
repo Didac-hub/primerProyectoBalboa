@@ -3,12 +3,16 @@
 
 /* PRINCIPAL */
 @font-face {
-font-family: "helvetica";
+font-family: "Helvetica";
 src: url(../tipografias/Helvetica-Light.otf);
 }
 
+
 header {
-    background: #333;
+    background: #fff
+    
+    
+         ;
 }
 
 h1{
@@ -74,7 +78,7 @@ ul a:hover {
 /* FOOTER */
 
 footer{
-  background: #333;
+  background: #fff;
   color: black;
   padding: 30px;;
     clear: both;
