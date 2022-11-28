@@ -4,7 +4,7 @@ include_once 'productos.php';
 class postres extends productos{
     public $nameProduct;
 
-    public function __construct($tipoProducto,$precioPrdocuto,$nameProduct,$id){
+    public function __construct($id,$tipoProducto,$nameProduct,$precioPrdocuto){
         Parent::__construct($tipoProducto,$precioPrdocuto,$id);
         $this->nameProduct = $nameProduct;
 
