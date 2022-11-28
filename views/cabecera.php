@@ -1,3 +1,4 @@
+<div class="margenes">
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"><img src="img\LogoDefR.png"></a>
@@ -5,33 +6,22 @@
       <span class="navbar-toggler-icon"></span>
     </button> 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"></li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+          <a class="nav-link active" aria-current="page" href="Index.php">INICIO</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            CARTA
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">ENTRANTES</a></li>
-            <li><a class="dropdown-item" href="#">HAMBURGUESAS</a></li>
-            <li><a class="dropdown-item" href="#"></a>BEBIDAS</li>
-            <li><a class="dropdown-item" href="#"></a>POSTRES</li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="carta.php">CARTA</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            SOBRE NOSOTROS
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">POLITICAS DE PRIVACIDAD</a></li>
-            <li><a class="dropdown-item" href="#">AVISO LEGAL</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">POLITICAS DE COOKIES</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="politicas.php">SOBRE NOSOTROS</a>
+        </li>
+        
+          <li class="nav-item"><a href="carrito.php"><img class="btinicio" src="img/carrito.png"></a></li>
+          <li class="nav-item"><a href="inicioUser.php"><img class="btinicio" src="img/usuario.png"></a></li>
       </ul>
     </div>
   </div>
 </nav>
+</div>

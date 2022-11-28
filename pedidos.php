@@ -1,124 +1,62 @@
 <?php
 
 class pedidos{
-    public $numPedido;
-    public $productos = [];
-    public $idCliente;
-    public $metodoPago;
-    public $pTotal;
+    public $cantidad;
+    public $producto;
 
-    public function __construct($numPedido,$productos,$idCliente,$metodoPago,$pTotal){
-        $this->$numPedido = $numPedido;
-        $this->$productos = $productos;
-        $this->$idCliente = $idCliente;
-        $this->$metodoPago = $metodoPago;
-        $this->$pTotal = $pTotal;
+    public function __construct($producto){
+        $this->producto = $producto;
+        $this->cantidad = 1;
 
     }
-
-
-    /**
-     * Get the value of numPedido
-     */ 
-    public function getNumPedido()
-    {
-        return $this->numPedido;
-    }
-
-    /**
-     * Set the value of numPedido
-     *
-     * @return  self
-     */ 
-    public function setNumPedido($numPedido)
-    {
-        $this->numPedido = $numPedido;
-
-        return $this;
-    }
-
     
+
+
+
     /**
-     * Get the value of productos
+     * Get the value of cantidad
      */ 
-    public function getProductos()
+    public function getCantidad()
     {
-        return $this->productos;
+        return $this->cantidad;
     }
 
     /**
-     * Set the value of productos
+     * Set the value of cantidad
      *
      * @return  self
      */ 
-    public function setProductos($productos)
+    public function setCantidad($cantidad)
     {
-        $this->productos = $productos;
+        $this->cantidad = $cantidad;
 
         return $this;
     }
 
-
     /**
-     * Get the value of idCliente
+     * Get the value of producto
      */ 
-    public function getIdCliente()
+    public function getProducto()
     {
-        return $this->idCliente;
+        return $this->producto;
     }
 
     /**
-     * Set the value of idCliente
+     * Set the value of producto
      *
      * @return  self
      */ 
-    public function setIdCliente($idCliente)
+    public function setProducto($producto)
     {
-        $this->idCliente = $idCliente;
+        $this->producto = $producto;
 
         return $this;
     }
 
-
-    /**
-     * Get the value of metodoPago
-     */ 
-    public function getMetodoPago()
-    {
-        return $this->metodoPago;
-    }
-
-    /**
-     * Set the value of metodoPago
-     *
-     * @return  self
-     */ 
-    public function setMetodoPago($metodoPago)
-    {
-        $this->metodoPago = $metodoPago;
-
-        return $this;
-    }
-
-
-    /**
-     * Get the value of pTotal
-     */ 
-    public function getPTotal()
-    {
-        return $this->pTotal;
-    }
-
-    /**
-     * Set the value of pTotal
-     *
-     * @return  self
-     */ 
-    public function setPTotal($pTotal)
-    {
-        $this->pTotal = $pTotal;
-
-        return $this;
+    public function clcPrecio(){
+        $valor = $this ->getProducto()->getPrecioProducto();
+        $pTotal = $valor * $this-> getCantidad();
+        return $pTotal;
     }
 }
 

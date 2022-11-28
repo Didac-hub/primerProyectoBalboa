@@ -7,12 +7,13 @@ font-family: "Helvetica";
 src: url(../tipografias/Helvetica-Light.otf);
 }
 
+.margenes{
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
 
 header {
-    background: #fff
-    
-    
-         ;
+    background: #fff;
 }
 
 h1{
@@ -74,21 +75,87 @@ ul a:hover {
 }
 
 
+.btOfer{
+  background-color: #E5C6C6;
+  color: white; 
+  font-size: 15px;
+  
 
-/* FOOTER */
-
-footer{
-  background: #fff;
-  color: black;
-  padding: 30px;;
-    clear: both;
 }
-footer p{
-  margin:0px;
-  width: 1920px;
-  height: 225px;
+.cajaOferta{
+  height: 100%;
 }
 
 .fondoOferta{
-  background-color: #A87F7F;
+  background-color: #E5C6C6;
+  width: 100%;
+}
+
+.botonOfer{
+  height: 100%;
+  background-color: black;
+  color: white;
+  margin-right: 170px;
+  margin-top: 30px;
+}
+
+.fotoOferta{
+  margin-right: 30px;
+}
+
+.text{
+  text-align: left;
+}
+
+.titOferta{
+  text-align: center;
+  padding-right: 170px;
+  padding-bottom: 30PX;
+}
+
+
+
+
+
+
+/* FOOTER */
+footer{
+  height: 250px;
+  padding-top: 50px;
+  background-color: black;
+  color:#fff;
+}
+
+.tRedes{
+  padding-bottom: 40px;
+}
+
+.fFoot{
+  margin-left: 58px;
+  
+}
+
+.fotoL{
+  margin-left: 80px;
+}
+
+.int{
+  margin-left: 80px;
+}
+
+.pgint{
+  margin-left: 50px;
+}
+
+
+/* CABECERA */
+.bg-light{
+  background-color: white!important;
+  
+}
+
+.btinicio{
+  height: 30px;
+  width: 30px;
+  margin-top: 5px;
 }

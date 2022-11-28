@@ -3,33 +3,22 @@
 include_once 'productos.php';
 class entrantes extends productos{
     public $nameProduct;
-    public $ingredientes = [];
 
-    public function __construct($tipoProducto,$precioPrdocuto,$ingredientes,$id){
+    public function __construct($tipoProducto,$precioPrdocuto,$id,$nameProduct){
         Parent::__construct($tipoProducto,$precioPrdocuto,$id);
-        $this->$ingredientes = $ingredientes;
+        $this->nameProduct = $nameProduct;
 
     }
 
 
-      /**
-     * Get the value of nameProduct
-     */ 
     public function getNameProduct()
     {
         return $this->nameProduct;
     }
 
-    /**
-     * Set the value of nameProduct
-     *
-     * @return  self
-     */ 
     public function setNameProduct($nameProduct)
     {
         $this->nameProduct = $nameProduct;
-
-        return $this;
     }
 }
 
