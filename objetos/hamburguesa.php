@@ -1,11 +1,11 @@
 <?php
 include_once 'productos.php';
-class hamburguesa extends productos{
+class Hamburguesa extends productos{
     public $nameProduct;
 
 
-    public function __construct($id,$tipoProducto,$nameProduct,$precioPrdocuto){
-        Parent::__construct($tipoProducto,$precioPrdocuto,$id);
+    public function __construct($id,$tipoProducto,$nameProduct,$precioProducto){
+        Parent::__construct($tipoProducto,$precioProducto,$id);
         $this->nameProduct = $nameProduct;
 
     }

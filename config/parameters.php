@@ -1,5 +1,5 @@
 <?php
 
-define("base url","http://localhost/videoclubPHP/");
+define("base url","http://localhost/Proyectos/primerproyectobalboa");
 
 ?>

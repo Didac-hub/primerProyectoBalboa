@@ -1,7 +1,7 @@
 <?php
 
 include_once 'productos.php';
-class entrantes extends productos{
+class Entrantes extends productos{
     public $nameProduct;
 
     public function __construct($id,$tipoProducto,$nameProduct,$precioPrdocuto){
