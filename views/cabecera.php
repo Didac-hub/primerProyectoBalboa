@@ -18,7 +18,7 @@
           <a class="nav-link active" aria-current="page" href="politicas.php">SOBRE NOSOTROS</a>
         </li>
         
-          <li class="nav-item"><a href="carrito.php"><img class="btinicio" src="img/carrito.png"></a></li>
+          <li class="carrito nav-item"><a href="carrito.php"><img class="btinicio" src="img/carrito.png"></a></li>
           <li class="nav-item"><a href="inicioUser.php"><img class="btinicio" src="img/usuario.png"></a></li>
       </ul>
     </div>

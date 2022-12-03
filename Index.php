@@ -7,11 +7,40 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/full_estil.css">
     <script src="assets/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>INICIO</title>
 </head>
 <body>
 
-<?php require_once 'views/cabecera.php'?>
+<?php 
+
+session_start();
+require_once 'views/cabecera.php';
+
+if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
+  session_unset(); 
+  session_destroy(); 
+  echo "session destroyed"; 
+}else{
+  $_SESSION['start'] = time();
+}
+
+if(isset($_SESSION['compra'])){
+    if(isset($_POST['entrante'])){
+        $productoS = new pedidos($entrantes[$_POST['entrante']]);
+    }else if(isset($_POST['hamburguesa'])){
+        $productoS = new pedidos($hamburguesa[$_POST['hamburguesa']]);
+    }else if(isset($_POST['postre'])){
+        $productoS = new pedidos($postre[$_POST['postre']]);
+        array_push($_SESSION['compra'],$productoS);
+    }else if(isset($_POST['bebida'])){
+      $productoS = new pedidos($bebidas[$_POST['bebida']]);
+      array_push($_SESSION['compra'],$productoS);
+}else{
+    $_SESSION['compra'] = array();
+}
+}
+
+?>
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="5000">
@@ -35,23 +64,36 @@
 </div>
 
 <div class="margenes">
-<div class="container-xxl row ms-3 mt-5">
-  <div class="col-6 col-sm-6 mt-2">
-      <img src="img\nach.jpg" width="650px" height="410px">
+<div class="container-xxl">
+  <div class="row ms-3 mt-4">
+  <div class="col-lg-6 col-sm-12 mt-2 mr-2">
+      <img id="nachIndex" src="img\nach.jpg" width="100%" height="100%">
   </div>
 
-  <div class="col-6 align-self-center">
-      <img src="img\burgir.jpg" width="654px" height="436.36px">
+  <div class="col-lg-6 col-sm-12 mt-2">
+      <img id="hambIndex" src="img\burgir.jpg" width="100%" height="100%">
+  </div>
+</div>
+
+</div>
+<div class="container-xxl">
+  <div class="row ms-3 mt-3 mb-4">
+  <div class="col-sm-6 mt-2 mr-2 mb-2">
+      <img id="posIndex"src="img\pos.png" width="100%" height="100%">
   </div>
 
-  
+  <div class="col-sm-6 mt-2 mb-2">
+      <img id="bebIndex" src="img\beb.jpg" width="100%" height="100%">
+  </div>
+</div>
+
 </div>
 </div>
 
 <div class="fondoOferta" width="1920px" height="600px">
 <div class="row">
   <div class="col-3"></div>
-    <div class="cajaOferta col-4 align-self-center" width="564px" height="436.36px">
+    <div class="cajaOferta col-4 align-self-center" width="560px" height="430px">
       <h3 class="titOferta"> OFERTAS DE LA SEMANA </h3>
       <p class="text"> ¡En nuestros locales ofrecemos a todos nuestros clientes <br>
         ofertas semanales para que podáis venir a disfrutarlas solos o <br>
@@ -62,8 +104,8 @@
         </div>
     </div>
 
-    <div class="fotoOferta col-2 align-self-cente" width="564px" height="436.36px">
-        <img src="img\arit.jpg" width="564px" height="436.36px">
+    <div class="fotoOferta col-lg-2 col-sm-12 mb-4 mt-4">
+        <img class="img-fluid" src="img\arit.jpg" width="564px" height="436.36px">
     </div>
 
     </div>
@@ -73,5 +115,5 @@
 </html>
 
 <?php
-require_once 'views/footer.php';
+include_once 'views/footer.php';
 ?>

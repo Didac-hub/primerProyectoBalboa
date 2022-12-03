@@ -3,11 +3,17 @@ abstract class productos{
     public $id;
     public $tipoProducto;
     public $precioProducto;
+    public $descrProduct;
+    public $imagen;
 
-    public function __construct($tipoProducto,$precioProducto,$id){
-        $this->$tipoProducto = $tipoProducto;
-        $this->$precioProducto = $precioProducto;
-        $this->$id = $id;
+
+    public function __construct($id,$tipoProducto,$precioProducto,$descrProduct,$imagen){
+        $this->tipoProducto = $tipoProducto;
+        $this->precioProducto = $precioProducto;
+        $this->id = $id;
+        $this->descrProduct = $descrProduct;
+        $this->imagen = $imagen;
+        
 }
 
 
@@ -22,6 +28,8 @@ abstract class productos{
         return $this;
     }
     
+    
+
     public function getTipoProducto()
     {
         return $this->tipoProducto;
@@ -30,9 +38,10 @@ abstract class productos{
     public function setTipoProducto($tipoProducto)
     {
         $this->tipoProducto = $tipoProducto;
-        return $this;
     }
     
+
+
     public function getPrecioProducto()
     {
         return $this->precioProducto;
@@ -41,7 +50,30 @@ abstract class productos{
     public function setPrecioProducto($precioProducto)
     {
         $this->precioProducto = $precioProducto;
-        return $this;
+    }
+
+
+
+    public function getDescrProduct()
+    {
+        return $this->descrProduct;
+    }
+
+    public function setDescrProduct($descrProduct)
+    {
+        $this->descrProduct = $descrProduct;
+    }
+
+
+
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
     }
 }
 

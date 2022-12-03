@@ -3,8 +3,12 @@
 
 /* PRINCIPAL */
 @font-face {
-font-family: "Helvetica";
-src: url(../tipografias/Helvetica-Light.otf);
+font-family: "thesis";
+src: url(/tipografias/Thesis.otf);
+}
+html{
+  overflow-x: hidden;
+
 }
 
 .margenes{
@@ -19,10 +23,12 @@ header {
 h1{
   margin-top:0px;
   margin-bottom:0px;
+  font-family: 'thesis';
 }
 
 h2 {
   padding:20px;
+  font-family: 'thesis';
 }
 
 header div div div a{
@@ -74,7 +80,14 @@ ul a:hover {
     background: black;
 }
 
+.colocacion{
+  width: 622px;
+  height: 415px;
+}
 
+
+
+/** SECCIÓN OFERTA */
 .btOfer{
   background-color: #E5C6C6;
   color: white; 
@@ -82,6 +95,7 @@ ul a:hover {
   
 
 }
+
 .cajaOferta{
   height: 100%;
 }
@@ -103,17 +117,72 @@ ul a:hover {
   margin-right: 30px;
 }
 
+.titOferta{
+  text-align: left;
+  padding-left: 15%;
+
+}
+
 .text{
   text-align: left;
+  padding-left: 10%;
 }
 
-.titOferta{
+
+/* CARTA */
+
+.fondoCarta{
+  background-color: #E5C6C6;
+  width: 100%;
+  height: 130px;
+}
+
+.imgFondo{
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  min-height: 100vh;
+}
+
+.colMiddle{
+  align-items: center;
+}
+
+.imgCarta{
+  width: 565px;
+  height: 378px;
+  margin-left: 1rem;
+  transition: all 2s ease-in-out;
+  
+}
+
+.imgCarta:hover{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60));
+  transition: all 2s ease-in-out;
+
+}
+
+.imgCarta:hover .descPro{
+  visibility: visible;
+}
+
+.imgCarta:hover .botonCarta{
+  visibility: visible;
+  
+}
+
+.descPro{
+  visibility: hidden;
+  color: white;
   text-align: center;
-  padding-right: 170px;
-  padding-bottom: 30PX;
+  
 }
 
-
+.botonCarta{
+  visibility: hidden;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
 
 
 
@@ -126,25 +195,41 @@ footer{
   color:#fff;
 }
 
-.tRedes{
-  padding-bottom: 40px;
+
+/* SECCIÓN REDES FGOOTER*/
+.cRedes{
+  width: 230px;
+  height: 73px;
+  padding-left: 15%;
+
 }
 
-.fFoot{
-  margin-left: 58px;
+.tRedes{
+  width: 220px;
+  height: 73px;
+  padding-bottom: 45px;
+}
+
+.imgRedes{
+  width: 230px;
+  height: 73px;
+}
+
+.margenImg{
+  margin-left: 8%;
+}
+
+/*SECCION LOGO DEL FOOTER*/
+.lFooter{
+  width: 187px;
+  height: 135px;
   
 }
 
-.fotoL{
-  margin-left: 80px;
-}
-
-.int{
-  margin-left: 80px;
-}
+/*SECCION PAGINAS INTERES FOOTER*/
 
 .pgint{
-  margin-left: 50px;
+  margin-left: 13%;
 }
 
 
@@ -158,4 +243,234 @@ footer{
   height: 30px;
   width: 30px;
   margin-top: 5px;
+}
+/*
+.carrito{
+  padding-right: 5%;
+}
+*/
+
+/*POLITICAS*/
+.pol{
+  text-align: center;
+}
+
+.polh2{
+  text-align: center;
+}
+
+.poltxt{
+  text-align: left;
+}
+
+
+
+@media (max-width: 500px){
+  /* INDEX MOVIL*/
+  .fotoOferta{
+    width: auto;
+    height: auto;
+  }
+  .text{
+    text-align: justify;
+  }
+
+  .botonOfer{
+    height: auto;
+    width: auto;
+    margin-left: 45%;
+    margin-bottom: 10%;
+  }
+
+  .titOferta{
+    padding-top: 10%;
+    margin-left: 6%;
+  }
+
+  .cajaOferta{
+    width: 400px;
+    height: 100%;
+  }
+
+  /*FOOTER MOVIL*/
+  footer{
+    height: 550px;
+    padding-top: 50px;
+    background-color: black;
+    color:#fff;
+  }
+
+  .lFooter{
+    width: 187px;
+    height: 135px;
+    
+  }
+
+  .imgRedes{
+    width: 230px;
+    height: 73px;
+    margin-right: 10%;
+    justify-content: center;
+  }
+  .cRedes{
+    width: 230px;
+    height: 73px;
+    padding-left: 15%;
+    justify-content: center;
+  
+  }
+  .tRedes{
+    width: 220px;
+    height: 73px;
+    padding-bottom: 45px;
+    justify-content: center;
+  }
+}
+
+@media (min-width:500px){
+  /*FOOTER*/
+  footer{
+    height: 250px;
+    padding-top: 50px;
+    background-color: black;
+    color:#fff;
+  }
+  /* SECCIÓN REDES FGOOTER*/
+.cRedes{
+  width: 230px;
+  height: 73px;
+  padding-left: 15%;
+
+}
+.tRedes{
+  width: 220px;
+  height: 73px;
+  padding-bottom: 45px;
+}
+.imgRedes{
+  width: 230px;
+  height: 73px;
+}
+.margenImg{
+  margin-left: 8%;
+}
+/*SECCION LOGO DEL FOOTER*/
+.lFooter{
+  width: 187px;
+  height: 135px;
+  
+}
+/*SECCION PAGINAS INTERES FOOTER*/
+.pgint{
+  margin-left: 13%;
+}
+  
+/*GENERAL PAGINA INICIO*/
+.margenes{
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+  
+  header {
+      background: #fff;
+  }
+  
+  h1{
+    margin-top:0px;
+    margin-bottom:0px;
+  }
+  
+  h2 {
+    padding:20px;
+  }
+  
+  header div div div a{
+    color: white;
+    text-decoration: none;
+  }
+  
+  header div div div a:hover{
+    color: red;
+    text-decoration: none;
+  }
+  
+  ul a{
+    /*background: green;*/
+    color: white;
+  }
+  ul a:hover {
+    color:red;
+    text-decoration: none;
+  }
+  
+  .nav-link {
+    padding:12px;
+  }
+  
+  .row {
+    padding-top: 0px;
+  }
+  
+  .menu-bar {
+    background: #222;
+    margin: 0px;
+  }
+  
+  .menu-bar a {
+    color: white;
+  }
+  
+  .seccion1{
+      background: #ddd;
+      border: 2px solid black;
+      margin: 6px 6PX 40PX 3PX;
+      padding: 20px;
+      /*float: left;
+      cursor: pointer;*/
+  }
+  
+  .seccion1:hover{
+      background: black;
+  }
+  
+  /** SECCIÓN OFERTA */
+  .btOfer{
+    background-color: #E5C6C6;
+    color: white; 
+    font-size: 15px;
+    
+  
+  }
+  
+  .cajaOferta{
+    height: 100%;
+  }
+  
+  .fondoOferta{
+    background-color: #E5C6C6;
+    width: 100%;
+  }
+  
+  .botonOfer{
+    height: 100%;
+    background-color: black;
+    color: white;
+    margin-right: 170px;
+    margin-top: 30px;
+  }
+  
+  .fotoOferta{
+    margin-right: 30px;
+  }
+  
+  .titOferta{
+    text-align: left;
+    padding-left: 15%;
+  
+  }
+  
+  .text{
+    text-align: left;
+    padding-left: 10%;
+  }
 }

@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <footer>
-    <div class="row align-items-center">
-        <div class=" pgint col-2 align-self-center">
-            <h3 class="int">PAGINAS DE INTERES</h3>
-            <p class="int">Carta</p>
-            <p class="int">Politicas de privacidad</p>
-        </div>
+    <div class="margenes">
+        <div class="container-xxl">
+        <div class="row align-items-center">
+            <div class="pgint col-4 text-align-center">
+                <h3>PAGINAS DE INTERES</h3>
+                <p><a href="carta.php">Carta</a></p>
+                <p><a href="politicas.php">Politicas de privacidad</a></p>
+            </div>
 
-        <div class="col-2 align-self-center">
-            <a class="fotoL" href="index.php"><img src="img\LogoFooter.png"></a>
-        </div>
-        
-        <div class="col-2 align-self-center">
-            <h3 class="tRedes">REDES SOCIALES</h3>
-            <p class="fFoot"><img src="img\twitt.png"><img src="img\inst.png"><img src="img\face.jpg"></p>
+            <div class="lFooter col-4 text-align-center">
+                <a href="index.php"><img src="img\LogoFooter.png"></a>
+            </div>
+            
+            <div class="cRedes col-4 text-align-center">
+                <h3 class="tRedes">REDES SOCIALES</h3>
+                <div class="imgRedes">
+                    <img class="margenImg" src="img\twt.png" href="https://twitter.com/?lang=es">
+                    <img class="margenImg" src="img\ins.png" href="https://www.instagram.com/">
+                    <img class="margenImg" src="img\fcb.png" href="https://es-es.facebook.com/">
+            </div>
+            </div>
         </div>
     </div>
+    </div>
 </footer>
-
-
-
-
-
-
-</html>
