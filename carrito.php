@@ -11,22 +11,18 @@
 </head>
 
 <?php
-include 'pedidos.php';
-include 'objetos/productos.php';
+//Incluimos lso archivos .php que vasmo a usar en esta página
+include 'objetos/hamburguesa.php';
+include 'objetos/entrantes.php';
+include 'objetos/postres.php';
+include 'objetos/bebidas.php';
+include 'objetos/agregarProduc.php';
+
+//Iniciamos la session 
 session_start();
-require_once 'views/cabecera.php';
+include_once 'views/cabecera.php';
+include 'objetos/pedido.php';
 
-
-
-if (isset($_POST['a0'])){
-    $v1 = $_POST['entrante'];
-}else if (isset($_POST['a1'])) {
-    $v2 = $_POST['hamburguesa'];
-}else if (isset($_POST['a1'])){
-    $v3 = $_POST['postre'];
-}else if (isset($_POST['a1'])){
-    $v4 = $_POST['bebida'];
-}
 
 if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
     session_unset(); 
@@ -36,28 +32,50 @@ if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
     $_SESSION['start'] = time();
 }
 
+//Realizamos las funcionalidades de agregar, restar y quitar productos y sus respectivas cantidasdes del carrito
 if(isset($_POST['del'])){
-    $pedidoS = $_SESSION["compra"];
-    if($pedidoS->getCantidad() == 1){
-        unset($_SESSION["compra"]);
-        $_SESSION["compra"] = array_values($_SESSION["compra"]);
+    $prodS = $_SESSION['compra'];
+    if($prodS->getCantidad() == 1){
+        unset($_SESSION['compra']);
+        $_SESSION['compra'] = array_values($_SESSION['compra']);
     }else{
-        $pedidoS->setCantidad($pedidoS->getCantidad() - 1);
+        $prodS->setCantidad($prodS->getCantidad() - 1);
     }
 
 }else if(isset($_POST['add'])){
-    $pedidoS = $_SESSION["compra"];
-    $pedidoS->setCantidad($pedidoSel->getCantidad() + 1);
+    $prodS = $_SESSION['compra'];
+    $prodS->setCantidad($prodS->getCantidad() + 1);
 }
 
-
-require_once 'objetos/hamburguesa.php';
-require_once 'objetos/entrantes.php';
-require_once 'objetos/postres.php';
-require_once 'objetos/productos.php';
-require_once 'objetos/bebidas.php';
-require_once 'objetos/agregarProduc.php';
 ?>
+
+<?php
+    /*
+    En caso de que un usuario desee finalizar su compra y le de al botón de Finalizar compra automaticamete 
+    se guarda en una COOKIE el contenido de su úlrimo pedido por tal de poder revisarlo posteriormente
+    */
+    if(isset($_POST["accion"])){  
+
+        if($_POST["accion"] == "finalizar"){
+            $pedidoA = $_SESSION["compra"];
+            setcookie("pedidoA",serialize($_SESSION["compra"]),time() + 120);
+            session_unset(); 
+            session_destroy();
+            
+            //Como ya se ha realizado la compra con lso productos que hay en el carrito se destruye la session
+        }else{
+
+            if(isset($_COOKIE["pedidoA"])){
+                $pedidoA = unserialize($_COOKIE["pedidoA"]);
+            }
+        }
+        
+    }
+    ?>
+
+
+
+<!-- Mostramos el banner de la página principal-->
 <div class="banner">
     <img src="img/inicio2.jpg" width="100%">
 </div>
@@ -65,19 +83,48 @@ require_once 'objetos/agregarProduc.php';
 <div class="margenes">
     <div class="container-xxl">
     <div class="row ms-3 mt-4">
-  <?php foreach ($_SESSION["compra"] as $pedido){ ?>
-  
-    <div class="col-6 col-sm-6 mb-4 text-center" style="background-image: url(img/<?=$pedido->getProductos()->getImagen()?>.png);">
-    <h5 class="descPro"><?=$pedido->getProductos()->getNameProduct()?></h5>  
-    <p class="descPro"><?=$pedido->getProductos()->getPrecioProducto()?></p>
-    <button class="restar" name="del">-</button>
-    <p class="descPro"><?=$pedido->getProductos()->getCantidad()?></p>
-    <button class="sumar" name="add">+</button>
-    <input type="hidden" name="pedido" value=<?=$pedido->getProductos()->getId();?>>
-    </div>
+    <table id="pedido">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre Producto</th>
+            <th></th>
+            <th>Cantidad</th>
+            <th></th>
+            <th>Precio</th>
+        </tr>
+        <?php
+        $pos = 0;
+        foreach ($_SESSION['compra'] as $pedido){ 
+            ?>
 
-  <?php }?>
+            <tr>
+                <td><img src="img/<?=$pedido->getImagen()?>.png"></td>
+                <td><?=$pedido->getNameProduct()?></td>
+                <td><button class="resta" type="submit" name="del"> - </button>
+                <td><?=$pedido->getCantidad()?></td>
+                <button class="suma" type="submit" name="add"> + </button>
+                <td><?=$pedido->getPrecioProducto()?></td>
+                <td></td><td></td>
+                <td>
+                    <form action='carrito.php' method="post">>
+                        <input type="hidden" name="pos" value=<?=$pos?>>
+                        <td><button class="bet-button w3-black w3-section" type="submit" name="add"> + </button></td>
+                        <td><button class="bet-button w3-black w3-section" type="submit" name="del"> - </button></td>   
+                    </form>
+                </td>
+            </tr>
+            
+            <?php $pos++;
+        } 
+        ?>
+        <form action="fCompra.php" method="POST">
+            <button class="finCompra" type="submit">Finalizar compra</button><br><br>
+            <input type="hidden" name="accion" value="finalizar">
+        </form>
 
-        </div>
-    </div>
-</div>
+</html>
+
+
+
+
+        

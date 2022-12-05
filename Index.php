@@ -11,36 +11,11 @@
 </head>
 <body>
 
-<?php 
-
-session_start();
-require_once 'views/cabecera.php';
-
-if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
-  session_unset(); 
-  session_destroy(); 
-  echo "session destroyed"; 
-}else{
-  $_SESSION['start'] = time();
-}
-
-if(isset($_SESSION['compra'])){
-    if(isset($_POST['entrante'])){
-        $productoS = new pedidos($entrantes[$_POST['entrante']]);
-    }else if(isset($_POST['hamburguesa'])){
-        $productoS = new pedidos($hamburguesa[$_POST['hamburguesa']]);
-    }else if(isset($_POST['postre'])){
-        $productoS = new pedidos($postre[$_POST['postre']]);
-        array_push($_SESSION['compra'],$productoS);
-    }else if(isset($_POST['bebida'])){
-      $productoS = new pedidos($bebidas[$_POST['bebida']]);
-      array_push($_SESSION['compra'],$productoS);
-}else{
-    $_SESSION['compra'] = array();
-}
-}
-
+<?php
+//Incluimos la cabecera al principio de la página para mostrarla.(Debemos realizar esta acción en todos los archivos)
+include_once 'views/cabecera.php';
 ?>
+<!-- Creamos un carousel con fotos para poder mostrarlas por pantalla con un minimo de intervalo de tiempo entre ellas -->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="5000">
@@ -62,16 +37,16 @@ if(isset($_SESSION['compra'])){
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
+<!-- Creamos lso diferentes apartados que tendrá la página. En este caso generamos las primeras secciones-->
 <div class="margenes">
 <div class="container-xxl">
   <div class="row ms-3 mt-4">
   <div class="col-lg-6 col-sm-12 mt-2 mr-2">
-      <img id="nachIndex" src="img\nach.jpg" width="100%" height="100%">
+      <a href="carta.php"><img id="nachIndex" src="img\nach.jpg" width="100%" height="100%"></a>
   </div>
 
   <div class="col-lg-6 col-sm-12 mt-2">
-      <img id="hambIndex" src="img\burgir.jpg" width="100%" height="100%">
+      <a href="carta.php"><img id="hambIndex" src="img\burgir.jpg" width="100%" height="100%"></a>
   </div>
 </div>
 
@@ -79,17 +54,18 @@ if(isset($_SESSION['compra'])){
 <div class="container-xxl">
   <div class="row ms-3 mt-3 mb-4">
   <div class="col-sm-6 mt-2 mr-2 mb-2">
-      <img id="posIndex"src="img\pos.png" width="100%" height="100%">
+  <a href="carta.php"><img id="posIndex"src="img\pos.png" width="100%" height="100%"></a>
   </div>
 
   <div class="col-sm-6 mt-2 mb-2">
-      <img id="bebIndex" src="img\beb.jpg" width="100%" height="100%">
+  <a href="carta.php"><img id="bebIndex" src="img\beb.jpg" width="100%" height="100%"></a>
   </div>
 </div>
 
 </div>
 </div>
 
+<!-- Generamos la seción de oferta para nuestra página web -->
 <div class="fondoOferta" width="1920px" height="600px">
 <div class="row">
   <div class="col-3"></div>
@@ -114,6 +90,7 @@ if(isset($_SESSION['compra'])){
 </body>
 </html>
 
+<!-- Agregamos el footer al final de la página al igual que la cabecera para que nos aparezca en todas las paginas-->
 <?php
 include_once 'views/footer.php';
 ?>

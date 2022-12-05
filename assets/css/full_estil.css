@@ -3,7 +3,7 @@
 
 /* PRINCIPAL */
 @font-face {
-font-family: "thesis";
+font-family: var(--bs-body-font-family);
 src: url(/tipografias/Thesis.otf);
 }
 html{
@@ -179,8 +179,8 @@ ul a:hover {
 
 .botonCarta{
   visibility: hidden;
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: #E5C6C6;
   text-align: center;
 }
 

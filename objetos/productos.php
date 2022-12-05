@@ -8,9 +8,9 @@ abstract class productos{
 
 
     public function __construct($id,$tipoProducto,$precioProducto,$descrProduct,$imagen){
+        $this->id = $id;
         $this->tipoProducto = $tipoProducto;
         $this->precioProducto = $precioProducto;
-        $this->id = $id;
         $this->descrProduct = $descrProduct;
         $this->imagen = $imagen;
         
