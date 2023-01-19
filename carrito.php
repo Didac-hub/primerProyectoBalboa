@@ -12,39 +12,43 @@
 
 <?php
 //Incluimos lso archivos .php que vasmo a usar en esta página
-include 'objetos/hamburguesa.php';
-include 'objetos/entrantes.php';
-include 'objetos/postres.php';
-include 'objetos/bebidas.php';
-include 'objetos/agregarProduc.php';
+require_once 'objetos/hamburguesa.php';
+require_once 'objetos/entrantes.php';
+require_once 'objetos/postres.php';
+require_once 'objetos/bebidas.php';
+require_once 'objetos/agregarProduc.php';
+require_once 'objetos/pedido.php';
 
 //Iniciamos la session 
 session_start();
 include_once 'views/cabecera.php';
-include 'objetos/pedido.php';
+if (!isset($_SESSION['compra'])) {
+    $_SESSION['compra'] = array();
+    }
 
 
+/*
 if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
     session_unset(); 
     session_destroy(); 
-    echo "session destroyed"; 
 }else{
     $_SESSION['start'] = time();
 }
+*/
 
-//Realizamos las funcionalidades de agregar, restar y quitar productos y sus respectivas cantidasdes del carrito
+//Realizamos las funcionalidades de agregar, restar y quitar productos y sus respectivas cantidades del carrito
 if(isset($_POST['del'])){
     $prodS = $_SESSION['compra'];
-    if($prodS->getCantidad() == 1){
-        unset($_SESSION['compra']);
+    if($prodS[$_POST['pos']]->getCantidad() == 1){
+        unset($_SESSION['compra'][$_POST['pos']]);
         $_SESSION['compra'] = array_values($_SESSION['compra']);
     }else{
-        $prodS->setCantidad($prodS->getCantidad() - 1);
+        $prodS[$_POST['pos']]->setCantidad($prodS[$_POST['pos']]->getCantidad() - 1);
     }
 
 }else if(isset($_POST['add'])){
     $prodS = $_SESSION['compra'];
-    $prodS->setCantidad($prodS->getCantidad() + 1);
+    $prodS[$_POST['pos']]->setCantidad($prodS[$_POST['pos']]->getCantidad() + 1);
 }
 
 ?>
@@ -82,45 +86,59 @@ if(isset($_POST['del'])){
 
 <div class="margenes">
     <div class="container-xxl">
+        <?php
+        if (count($_SESSION['compra']) == 0) {
+            echo "No tienes ningún producto en la cesta";
+        }else{
+        ?>
+
     <div class="row ms-3 mt-4">
     <table id="pedido">
         <tr>
-            <th>Foto</th>
+            <th></th>
             <th>Nombre Producto</th>
-            <th></th>
             <th>Cantidad</th>
-            <th></th>
             <th>Precio</th>
         </tr>
         <?php
         $pos = 0;
+        
         foreach ($_SESSION['compra'] as $pedido){ 
+            
             ?>
 
             <tr>
-                <td><img src="img/<?=$pedido->getImagen()?>.png"></td>
-                <td><?=$pedido->getNameProduct()?></td>
-                <td><button class="resta" type="submit" name="del"> - </button>
-                <td><?=$pedido->getCantidad()?></td>
-                <button class="suma" type="submit" name="add"> + </button>
-                <td><?=$pedido->getPrecioProducto()?></td>
+                <td><img src="img/<?=$pedido->getProducto()->getImagen()?>.png" width="250px"></td>
+                <td><?=$pedido->getProducto()->getNameProduct()?></td>
+                <form method="POST">
+                <input type="hidden" name="pos" value=<?=$pos?>>
+                <td><button class="resta" type="submit" name="del"> - </button> 
+                <?=$pedido->getCantidad()?>
+                <button class="suma" type="submit" name="add"> + </button></td>
+                </form>
+                <td><?=$pedido->getProducto()->getPrecioProducto()?></td>
                 <td></td><td></td>
                 <td>
-                    <form action='carrito.php' method="post">>
-                        <input type="hidden" name="pos" value=<?=$pos?>>
-                        <td><button class="bet-button w3-black w3-section" type="submit" name="add"> + </button></td>
-                        <td><button class="bet-button w3-black w3-section" type="submit" name="del"> - </button></td>   
-                    </form>
                 </td>
             </tr>
             
             <?php $pos++;
         } 
         ?>
-        <form action="fCompra.php" method="POST">
-            <button class="finCompra" type="submit">Finalizar compra</button><br><br>
+    </table>
+    <form action="carta.php" method="POST">
+        <button class="cancelarCompra" type="submit">Cancelar </button>
+    </form>
+    
+        <form action="http://localhost/Proyectos/primerproyectobalboa/objetos/fCompra.php" method="POST">
+            <button class="finCompra" name="fCompra" type="submit">Finalizar compra</button><br><br>
             <input type="hidden" name="accion" value="finalizar">
         </form>
+        </div>
+    </div>
+        </div>
+        <?php
+        }?>
 
 </html>
 

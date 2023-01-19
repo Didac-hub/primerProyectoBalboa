@@ -12,8 +12,38 @@
 <body>
 
 <?php
-//Incluimos la cabecera al principio de la página para mostrarla.(Debemos realizar esta acción en todos los archivos)
+//Incluimos los diferentes archivos .php que necesitemos en cada caso. 
+include 'config/database.php';
+include 'objetos/hamburguesa.php';
+include 'objetos/entrantes.php';
+include 'objetos/postres.php';
+include 'objetos/bebidas.php';
+include 'objetos/agregarProduc.php';
+include 'objetos/pedido.php';
+
+//DataBase::connect();
+
+//Iniciamos la session de nuestra pagina
+session_start();
 include_once 'views/cabecera.php';
+
+if (!isset($_SESSION['compra'])) {
+  $_SESSION['compra'] = array();
+  }
+
+if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
+  session_unset(); 
+  session_destroy(); 
+  echo "session destroyed"; 
+}else{
+  $_SESSION['start'] = time();
+
+
+  if(isset($productoS)){
+      $pedido = new pedido($productoS);
+      array_push($_SESSION['compra'], $pedido);
+}
+}
 ?>
 <!-- Creamos un carousel con fotos para poder mostrarlas por pantalla con un minimo de intervalo de tiempo entre ellas -->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">

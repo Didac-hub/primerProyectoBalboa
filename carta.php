@@ -23,19 +23,20 @@ include 'objetos/pedido.php';
 //Iniciamos la session de nuestra pagina
 session_start();
 include_once 'views/cabecera.php';
-
+if (!isset($_SESSION['compra'])) {
+  $_SESSION['compra'] = array();
+  }
+/*
 if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 30)) {
   session_unset(); 
   session_destroy(); 
   echo "session destroyed"; 
 }else{
   $_SESSION['start'] = time();
-
-
-  if(isset($productoS)){
-      $pedido = new pedido($productoS);
-      array_push($_SESSION['compra'], $pedido);
 }
+if(isset($productoS)){
+  $pedido = new pedido($productoS);
+  array_push($_SESSION['compra'], $pedido);
 }
 /*
   if(isset($_SESSION['compra'])){
@@ -96,7 +97,7 @@ apartado entrantes, hamburguesas, postres o bebidas para estos poder ser agregad
                 $_SESSION['compra'][$_POST['bebida']] = new pedido($prodS);
           }
         }
-
+          var_dump($_SESSION['compra']);
     } else {
         $_SESSION['compra'] = array();
     }
